@@ -1,0 +1,21 @@
+/*-- ************************************************************* -->
+<---                      BUTTON.MODULE.CSS                        -->
+<--- ************************************************************* -*/
+.button_input {
+    font-family: "Century Gothic", "CenturyGothic", "AppleGothic", sans-serif;
+    font-size: min(5vw, 1rem);
+    background-color: rgb(100, 100, 100);
+    border: 1px solid rgb(130, 120, 110);
+    border-radius: .2rem;
+    color: whitesmoke;
+    padding: 0.25rem 1rem;
+    text-align: center;
+    width: min(35vw, 7rem);
+}
+
+.button_input:hover {
+    font-family: "Century Gothic", "CenturyGothic", "AppleGothic", sans-serif;
+    background-color: rgb(100, 100, 100);
+    border: 1px solid rgb(130, 120, 110);
+    color: whitesmoke;
+}
