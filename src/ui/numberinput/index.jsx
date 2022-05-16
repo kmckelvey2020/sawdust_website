@@ -1,8 +1,10 @@
-import styles from "./fileinput.module.css"
-export default function FileInput({ 
-    type='file', 
+import styles from "./numberinput.module.css"
+export default function NumberInput({ 
+    type='number', 
     label, 
     value,
+    min,
+    max,
     onChange = () => {} 
 }){
 
@@ -15,19 +17,21 @@ export default function FileInput({
     .join('_');
     
     return (
-        <div className={ styles.fileinput_container }>
+        <div className={ styles.numberinput_container }>
             <div>
-                <label className="fileinput_label" htmlFor={ id }>
+                <label className="numberinput_label" htmlFor={ id }>
                     { label }
                 </label>
                 :
             </div>
             <input
                 type={ type }
-                className={ styles.fileinput_input }
-                name={ id }
+                className={ styles.numberinput_input }
+                name={ id}
                 id={ id }
                 value={ value ? value: '' }
+                min={ min }
+                max={ max }
                 onChange={ onChange }
             />
         </div>

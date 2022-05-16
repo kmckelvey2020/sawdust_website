@@ -1,35 +1,50 @@
+import styles from "./radio.module.css";
+
 export default function Radio({ 
-    type='radio', 
-    label,
-    onChange = () => {},
-    value,
-    groupname
+    type="radio", 
+    labels,
+    values,
+    groupname,
+    onChange = () => {} 
 }){
 
-    const id = label
+    const groupid = groupname
     .toLowerCase()
     .split(' ')
     .map((word)=>{
-        word.replace(/[^a-z0-9]+/g,'')
+        return word.replace(/[^a-z0-9]+/g,'')
     })
-    .join('-');
-    
+    .join('_');
+
     return (
-        <div className="radio_button_container">
-            <div>
-                <label className="radio_button_label" htmlFor={id}>
-                    {label}
-                </label>
-                :
-            </div>
-            <input
-                id={id}
-                className="radio_button_input"
-                name={groupname}
-                type={type}
-                onChange={(e) => onChange(e.target.value, e)}
-                value={value}
-            />
+        <div className={ styles.radio_container }>
+            {
+                labels.map((label, index) => {
+                    const val = values[index];
+                    const labelid = label
+                        .toLowerCase()
+                        .split(' ')
+                        .map((word)=>{
+                            return word.replace(/[^a-z0-9]+/g,'')
+                        })
+                        .join('_');
+                    return(
+                        <div key={ labelid }>
+                            <label htmlFor={ labelid }>
+                                { label }
+                            </label>
+                            :
+                            <input  
+                                type={ type }
+                                id={ labelid }
+                                name={ groupid }
+                                value={ val }
+                                onChange={ onChange }
+                                />
+                        </div>
+                    )
+                })
+            }
         </div>
     )
 }

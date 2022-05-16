@@ -1,33 +1,24 @@
 /*-- ************************************************************* -->
-<---                      BUTTON.MODULE.CSS                        -->
+<---                      LAYOUT.MODULE.CSS                        -->
 <--- ************************************************************* -*/
 .background_container {
-    height: 100%;
-    min-height: 700px;
-    background-image: url('../../ui//images/background_photo_desktop1.png');
-    background-size: cover;
+    
+    background-image: url('/background_photo_desktop1.png');
+    background-size: auto;
     background-position-x: center;
     background-position-y: top;
     background-repeat: no-repeat;
-    background-color: whitesmoke;
-    padding: 0 15%;
+    height: 100%;
     margin: 0 0;
+    min-height: 100vh;
+    padding: 0 15%;
     vertical-align: top;
 }
 
 .layout_container {
+    background-color: rgba(250, 255, 255, 0.7);
     height: 100%;
-    background-color: rgba(250, 255, 255, .7);
-    padding: 0 auto;
     margin: 0 0;
-}
-
-.header {
-    min-height: 10vh;
-    display: flex;
-}
-
-.footer {
-    min-height: 10vh;
-    display: flex;
+    min-height: 100vh;
+    padding: 0 3vw;
 }

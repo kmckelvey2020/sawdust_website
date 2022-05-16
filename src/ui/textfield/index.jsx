@@ -1,9 +1,9 @@
+import styles from "./textfield.module.css"
 export default function TextField({ 
     type='text', 
     label, 
-    placeholder,
-    onChange = () => {},
-    value 
+    value,
+    onChange = () => {} 
 }){
 
     const id = label
@@ -12,23 +12,23 @@ export default function TextField({
     .map((word)=>{
         return word.replace(/[^a-z0-9]+/g,'')
     })
-    .join('-');
+    .join('_');
     
     return (
-        <div className="text_field_container">
+        <div className={ styles.text_field_container }>
             <div>
-                <label className="text_field_label" htmlFor={id}>
-                    {label}
+                <label className="text_field_label" htmlFor={ id }>
+                    { label }
                 </label>
                 :
             </div>
             <input
-                id={id}
-                className="text_field_input"
-                type={type}
-                placeholder={placeholder ? placeholder : ''}
-                onChange={(e) => onChange(e.target.value, e)}
-                value={value}
+                type={ type }
+                className={ styles.text_field_input }
+                name={ id}
+                id={ id }
+                value={ value ? value: '' }
+                onChange={ onChange }
             />
         </div>
     )

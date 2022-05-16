@@ -1,9 +1,10 @@
-import styles from "./fileinput.module.css"
-export default function FileInput({ 
-    type='file', 
+import styles from "./textarea.module.css";
+
+export default function TextArea({ 
     label, 
+    rows=3,
     value,
-    onChange = () => {} 
+    onChange = () => {}
 }){
 
     const id = label
@@ -15,21 +16,22 @@ export default function FileInput({
     .join('_');
     
     return (
-        <div className={ styles.fileinput_container }>
+        <div className={ styles.text_area_container }>
             <div>
-                <label className="fileinput_label" htmlFor={ id }>
+                <label className="text_area_label" htmlFor={ id }>
                     { label }
                 </label>
                 :
             </div>
-            <input
-                type={ type }
-                className={ styles.fileinput_input }
+            <textarea
+                className={ styles.text_area_input }
                 name={ id }
                 id={ id }
+                rows={ rows }
                 value={ value ? value: '' }
                 onChange={ onChange }
             />
+            
         </div>
     )
 }

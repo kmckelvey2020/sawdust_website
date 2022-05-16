@@ -1,65 +1,46 @@
 import Head from "next/head";
-import Button from "@/src/ui/button";
-import Checkbox from "@/src/ui/checkbox";
-import Radio from "@/src/ui/radio";
-import Textfield from "@/src/ui/textfield";
+import Image from "next/image";
+
+import styles from "./index.module.css";
 
 export default function LandingPage() {
   return (
-    <div className="container">
+    <div className={ styles.landing_container }>
       <Head>
         <title>Sawdust CastleRock Home</title>
         <meta name="description" content="Home of Sawdust Castle Rock - for restored and handcrafted furniture, art, woodburning, and specialty woodcrafting. Woodcrafting with heart and history." />
       </Head>
-      <h1>Heading 1</h1>
-      <h2>Heading 2</h2>
       <h3>Heading 3</h3>
-      <h4>Heading 4</h4>
-      <h5>Heading 5</h5>
-      <h6>Heading 6</h6>
-      <p>paragraph</p>
-      <span className="tiny-text">tiny text</span>
-      <a href="https://www.google.com">This is a link</a>
-      <br />
-      <Button
-        label="button1">
-          Button
-      </Button>
-      <Checkbox 
-        label="Checkbox Label1"
-        value="thing1"
-        checked
-      />
-      <Checkbox 
-        label="Checkbox Label2"
-        value="thing2"
-        checked={false}
-      />
-      <Checkbox 
-        label="Checkbox Label3"
-        value="thing3"
-        checked={false}
-      />
-      <Radio 
-        label="Radio Label1"
-        value="checked"
-        groupname="radiogroup"
-      />
-      <Radio 
-        label="Radio Label2"
-        value="checked"
-        groupname="radiogroup"
-      />
-      <Radio 
-        label="Radio Label3"
-        value="checked"
-        groupname="radiogroup"
-      />
-      <Textfield 
-        label="Textfield Label"
-        placeholder="Textfield placeholder"
-        value="value" 
-      />
+      <span className={ styles.lumber1 }>
+        <Image
+          src="/lumbertobecrafted_d.jpg" 
+          alt="Lumber ready to be built into something awesome"
+          width={ 450 }
+          height={ 568 }
+          layout="responsive"
+          sizes="50vw"
+        />
+      </span>
+      <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing 
+      elit, sed do eiusmod tempor incididunt ut labore 
+      et dolore magna aliqua. Ut enim ad minim veniam, quis 
+      nostrud exercitation ullamco laboris nisi ut aliquip ex 
+      ea commodo consequat. Duis aute irure dolor in reprehenderit 
+      in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+      Excepteur sint occaecat cupidatat non proident, sunt in culpa 
+      qui officia deserunt mollit anim id est laborum.
+      </p> 
+      <h3>Heading 3</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing 
+      elit, sed do eiusmod tempor incididunt ut labore 
+      et dolore magna aliqua. Ut enim ad minim veniam, quis 
+      nostrud exercitation ullamco laboris nisi ut aliquip ex 
+      ea commodo consequat. Duis aute irure dolor in reprehenderit 
+      in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+      Excepteur sint occaecat cupidatat non proident, sunt in culpa 
+      qui officia deserunt mollit anim id est laborum.
+      </p>
     </div>
   )
 }

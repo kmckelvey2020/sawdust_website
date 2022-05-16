@@ -1,29 +1,28 @@
 import styles from "./button.module.css";
 
 export default function Button({ 
-    children,
     type = 'button',
     label,
     onClick = () => {} 
 }){
-
     const id = label
     .toLowerCase()
     .split(' ')
     .map((word)=>{
         return word.replace(/[^a-z0-9]+/g,'')
     })
-    .join('-');
-    
+    .join('_');
 
     return (
         <button 
-            id={id}
-            className={styles.button_input}
-            onClick={onClick}
-            type={type}
+            type={ type }
+            className={ styles.button_input }
+            name={ id }
+            id={ id }
+            value={ label }
+            onClick={ onClick }
         >
-            {children}
+            { label }
         </button>
     )
 }

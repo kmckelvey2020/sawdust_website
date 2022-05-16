@@ -1,0 +1,27 @@
+/*-- ************************************************************* -->
+<---             PRODUCT_MANAGEMENT_FORM.MODULE.CSS                -->
+<--- ************************************************************* -*/
+
+.form_container {
+    margin: 0 auto;
+}
+
+.form_container form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0 auto;
+}
+
+.field_set {
+    border: 0rem;
+    margin: 0;
+    padding: 0;
+}
+
+.field_set p {
+    margin: 0 0.5rem;
+    padding: 0.25rem 0.25rem;
+    width: min(60vw, 30rem);
+}
