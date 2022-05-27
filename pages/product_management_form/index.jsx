@@ -4,7 +4,7 @@ import { useState } from "react";
 import styles from "./product_management_form.module.css";
 import Card from "@/src/ui/card";
 import FieldSet from "@/src/features/fieldset";
-import { FieldSet1, FieldSet2_images, FieldSet3_submission } from "./product_management_form_inputs";
+import { FieldSet1, FieldSet2_images, FieldSet3_submission } from "@/src/features/fieldset/product_management_form_inputs";
 import Logo from "@/src/ui/logo";
 import ProductListing from "@/src/features/product_listing";
 
