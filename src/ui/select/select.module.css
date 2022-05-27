@@ -11,9 +11,27 @@
     background-color: whitesmoke;
     border: 1px solid rgb(130, 120, 110);
     border-radius: .2rem;
+    box-sizing: border-box;
     color: rgb(100, 100, 100);
     font-family: "Century Gothic", "CenturyGothic", "AppleGothic", sans-serif;
     font-size: min(5vw, 1rem);
     padding: 0.25rem 0.25rem;
-    width: min(60vw, 30rem);
+    width: min(60vw, 25rem);
+}
+
+.select_input:focus {
+    box-shadow: 0 0 .5rem 0 rgb(100, 100, 100);
+}
+
+.error_message {
+    color: red;
+    display: none;
+    font-size: min(5vw, 1rem);
+    overflow-wrap: normal;
+    padding: 0.25rem 0.25rem;
+    width: min(60vw, 25rem);
+}
+
+.select_container input:invalid ~ .error_message {
+    display: block;
 }

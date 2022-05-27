@@ -1,0 +1,28 @@
+/*-- ************************************************************* -->
+<---                  NAVIGATION_BAR.MODULE.CSS                    -->
+<--- ************************************************************* -*/
+
+.nav_link {
+    background-color: rgba(250, 255, 255, 0.2);
+    border: 1px solid whitesmoke;
+    border-radius: 0.2rem;
+    color: rgb(130, 120, 110);
+    font-family: "Century Gothic", "CenturyGothic", "AppleGothic", sans-serif;
+    font-size: min(5vw, .85rem);
+    margin: 0 auto;
+    padding: 0.15rem 0.50rem;
+    vertical-align: middle; 
+}
+
+.nav_link:focus {
+    background-color: rgb(160, 160, 160);
+    border: 1px solid whitesmoke;
+    color: whitesmoke;
+}
+  
+.nav_link:hover,
+.nav_link:visited:hover {
+    background-color: rgb(100, 100, 100);
+    border: 1px solid rgb(130, 120, 110);
+    color: whitesmoke;
+}

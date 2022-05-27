@@ -3,11 +3,11 @@
 <--- ************************************************************* -*/
 
 .footer_content {
-    display: inline-flex;
     flex-wrap: wrap;
     justify-content: center;
     padding: 1rem auto;
     margin: 0 auto;
+    text-align: center;
     vertical-align: middle; 
     width: 100%;
 }
@@ -26,14 +26,14 @@
 }
 
 .mini_nav ul li {
-    border: 1px solid whitesmoke;
     margin: 0 0;
     padding: 0 0;
 }
 
 .mini_link {
-    background-color: whitesmoke;
+    background-color: rgba(250, 255, 255, 0.2);
     border: 1px solid whitesmoke;
+    border-radius: 0.2rem;
     color: rgb(130, 120, 110);
     font-family: "Century Gothic", "CenturyGothic", "AppleGothic", sans-serif;
     font-size: min(5vw, .75rem);

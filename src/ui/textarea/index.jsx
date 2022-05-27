@@ -1,37 +1,27 @@
 import styles from "./textarea.module.css";
 
-export default function TextArea({ 
-    label, 
-    rows=3,
-    value,
-    onChange = () => {}
-}){
+/*-- ************************************************************* -->
+<---                   TEXT AREA INPUT COMPONENT                   -->
+<--- ************************************************************* -*/
 
-    const id = label
-    .toLowerCase()
-    .split(' ')
-    .map((word)=>{
-        return word.replace(/[^a-z0-9]+/g,'')
-    })
-    .join('_');
-    
+export default function TextArea({ errorMessage="", id, label, onChange = () => {}, value, ...inputProps }) {
+
     return (
         <div className={ styles.text_area_container }>
             <div>
-                <label className="text_area_label" htmlFor={ id }>
+                <label htmlFor={ id }>
                     { label }
                 </label>
                 :
             </div>
             <textarea
                 className={ styles.text_area_input }
-                name={ id }
                 id={ id }
-                rows={ rows }
-                value={ value ? value: '' }
+                { ...inputProps }
                 onChange={ onChange }
+                value={ value }
             />
-            
+            <div className={ styles.error_message }>{ errorMessage }</div>
         </div>
     )
 }

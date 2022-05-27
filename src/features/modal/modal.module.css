@@ -1,0 +1,16 @@
+/*-- ************************************************************* -->
+<---                       MODAL.MODULE.CSS                        -->
+<--- ************************************************************* -*/
+
+.modal {
+    box-shadow: 0 .25rem .25rem rgba(100, 100, 100, 0.2);
+    border-radius: 0.2rem;
+    background-color: whitesmoke;
+    left: calc(50% - 15rem);
+    padding: 1rem;
+    position: fixed;
+    text-align: center;
+    top: 20vh;
+    width: min(50vw, 30rem);
+    z-index: 10;
+}

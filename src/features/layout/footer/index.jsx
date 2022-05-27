@@ -1,18 +1,15 @@
-import Link from "next/link";
-
 import styles from "./footer.module.css";
+import NavigationBar from "../navigation_bar";
+
+/*-- ************************************************************* -->
+<---                        FOOTER COMPONENT                       -->
+<--- ************************************************************* -*/
 
 export default function Footer (){
     return(
         <footer className={ styles.footer_content }>
             <nav className={ styles.mini_nav }>
-                <ul>
-                    <li><Link href="/"><a className={ styles.mini_link }>Home</a></Link></li>
-                    <li><Link href="/about"><a className={ styles.mini_link }>About</a></Link></li>
-                    <li><Link href="/shop"><a className={ styles.mini_link }>Store</a></Link></li>
-                    <li><Link href="/gallery"><a className={ styles.mini_link }>Gallery</a></Link></li>
-                    <li><Link href="/contact"><a className={ styles.mini_link }>Contact</a></Link></li>
-                </ul>
+                <NavigationBar />
             </nav>
             <span className={ styles.rights_reserved }>(c) 2022 MJSawdust | All rights reserved | 867-5309 | 
             emailaddress@buycoolstuff.outlook | </span>

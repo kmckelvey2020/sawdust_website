@@ -1,0 +1,25 @@
+/*-- ************************************************************* -->
+<---                 PRODUCT_LISTING.MODULE.CSS                    -->
+<--- ************************************************************* -*/
+
+.product_listing {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 auto;
+    margin: 0 auto;
+    overflow-wrap: break-word;
+    text-align: center;
+    width: min(50vw, 15rem);
+}
+
+.product_listing .product_image {
+    border: 1px solid rgb(130, 120, 110);
+    padding: 0 auto;
+    margin: 0 auto;
+    width: min(45vw, 14rem);
+}
+
+.fig_caption {
+    width: min(45vw, 14rem);
+}

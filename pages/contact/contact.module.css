@@ -3,5 +3,8 @@
 <--- ************************************************************* -*/
 
 .contact {
+    display: block;
+    overflow-wrap: break-word;
     margin: 0 auto;
+    padding: 0 auto;
 }

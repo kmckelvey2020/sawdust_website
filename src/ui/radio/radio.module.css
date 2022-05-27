@@ -1,8 +1,31 @@
 /*-- ************************************************************* -->
 <---                        RADIO.MODULE.CSS                       -->
 <--- ************************************************************* -*/
+
 .radio_container {
     font-family: "Century Gothic", "CenturyGothic", "AppleGothic", sans-serif;
     margin: 0.25rem 0.5rem;
     text-align: left;
+    width: min(60vw, 25rem);
+}
+
+.radio_container input {
+    box-sizing: border-box;
+}
+
+.radio_container input:focus {
+    box-shadow: 0 0 .5rem 0 rgb(100, 100, 100);
+}
+
+.error_message {
+    color: red;
+    display: none;
+    font-size: min(5vw, 1rem);
+    overflow-wrap: normal;
+    padding: 0.25rem 0.25rem;
+    width: min(60vw, 25rem);
+}
+
+.radio_container input:invalid ~ .error_message {
+    display: block;
 }

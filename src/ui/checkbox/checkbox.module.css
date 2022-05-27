@@ -6,3 +6,24 @@
     margin: 0.25rem 0.5rem;
     text-align: left;
 }
+
+.checkbox_container input {
+    box-sizing: border-box;
+}
+
+.checkbox_container input:focus {
+    box-shadow: 0 0 .5rem 0 rgb(100, 100, 100);
+}
+
+.error_message {
+    color: red;
+    display: none;
+    font-size: min(5vw, 1rem);
+    overflow-wrap: normal;
+    padding: 0.25rem 0.25rem;
+    width: min(60vw, 25rem);
+}
+
+.checkbox_container input:invalid ~ .error_message {
+    display: block;
+}

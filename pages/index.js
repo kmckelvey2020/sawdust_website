@@ -3,27 +3,11 @@ import Image from "next/image";
 
 import styles from "./index.module.css";
 
+/*-- ************************************************************* -->
+<---                    LANDING PAGE COMPONENT                     -->
+<--- ************************************************************* -*/
+
 export default function LandingPage() {
-  const { Client } = require('pg');
-
-  const client = new Client({
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
-      rejectUnauthorized: false
-    }
-    });
-
-  function connectDb () {
-    client.connect();
-
-    client.query('SELECT public,test_table FROM information_schema.tables;', (err, res) => {
-      if (err) throw err;
-      for (let row of res.rows) {
-        console.log(JSON.stringify(row));
-      }
-      client.end();
-    });
-  }
 
   return (
     <div className={ styles.landing_container }>
@@ -32,7 +16,6 @@ export default function LandingPage() {
         <meta name="description" content="Home of Sawdust Castle Rock - for restored and handcrafted furniture, art, woodburning, and specialty woodcrafting. Woodcrafting with heart and history." />
       </Head>
       <h3>Heading 3</h3>
-      { connectDb() }
       <span className={ styles.lumber1 }>
         <Image
           src="/lumbertobecrafted_d.jpg" 

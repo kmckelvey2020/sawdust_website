@@ -2,6 +2,10 @@ import styles from "./layout.module.css";
 import Footer from "@/src/features/layout/footer";
 import Header from "@/src/features/layout/header";
 
+/*-- ************************************************************* -->
+<---                        LAYOUT COMPONENT                       -->
+<--- ************************************************************* -*/
+
 export default function Layout ({ children }){
     return(
         <div className={ styles.background_container }>

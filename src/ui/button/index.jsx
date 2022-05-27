@@ -1,25 +1,19 @@
 import styles from "./button.module.css";
 
-export default function Button({ 
-    type = 'button',
-    label,
-    onClick = () => {} 
-}){
-    const id = label
-    .toLowerCase()
-    .split(' ')
-    .map((word)=>{
-        return word.replace(/[^a-z0-9]+/g,'')
-    })
-    .join('_');
+/*-- ************************************************************* -->
+<---                        BUTTON COMPONENT                       -->
+<--- ************************************************************* -*/
 
+export default function Button({ id, label, onClick = () => {}, name, type='button', value, ...inputProps}){
+    
     return (
         <button 
-            type={ type }
             className={ styles.button_input }
-            name={ id }
             id={ id }
-            value={ label }
+            { ... inputProps }
+            name={ name }
+            type={ type }
+            value={ value }
             onClick={ onClick }
         >
             { label }

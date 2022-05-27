@@ -1,0 +1,52 @@
+/*-- ************************************************************* -->
+<---                     FORM_INPUT.MODULE.CSS                     -->
+<--- ************************************************************* -*/
+
+.form_input_container {
+    font-family: "Century Gothic", "CenturyGothic", "AppleGothic", sans-serif;
+    margin: 0.5rem 0.5rem;
+    text-align: left;
+}
+
+.form_input_container input {
+    background-color: whitesmoke;
+    border: 1px solid rgb(130, 120, 110);
+    border-radius: .2rem;
+    color: rgb(100, 100, 100);
+    font-family: "Century Gothic", "CenturyGothic", "AppleGothic", sans-serif;
+    font-size: min(5vw, 1rem);
+    margin: 0 0;
+    padding: 0.25rem 0.25rem;
+    vertical-align: middle;
+    width: min(60vw, 25rem);
+}
+
+.form_input_nolabel input {
+    background-color: whitesmoke;
+    border: 1px solid rgb(130, 120, 110);
+    border-radius: .2rem;
+    color: rgb(100, 100, 100);
+    font-family: "Century Gothic", "CenturyGothic", "AppleGothic", sans-serif;
+    font-size: min(4vw, .85rem);
+    margin: 0 0;
+    padding: 0.25rem 0.25rem;
+    vertical-align: middle;
+}
+
+
+.form_input:focus {
+    box-shadow: 0 0 .5rem 0 rgb(100, 100, 100);
+}
+
+.error_message {
+    color: red;
+    display: none;
+    font-size: min(5vw, 1rem);
+    overflow-wrap: normal;
+    padding: 0.25rem 0.25rem;
+    width: min(60vw, 25rem);
+}
+
+.form_input_container input:invalid ~ .error_message {
+    display: block;
+}
