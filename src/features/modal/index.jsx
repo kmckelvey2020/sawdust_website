@@ -1,10 +1,10 @@
 import styles from "./modal.module.css";
 import Button from "@/src/ui/button";
 
-/*-- ************************************************************* -->
-<---                        MODAL COMPONENT                        -->
-<--- ************************************************************* -*/
-
+/*-- ****************************************************** -->
+<---                     MODAL COMPONENT                    -->
+<--- ****************************************************** -*/
+// To do: finish modal to use as a confirmation for deleting
 export default function Modal() {
     return (
         <div className={ styles.modal }>

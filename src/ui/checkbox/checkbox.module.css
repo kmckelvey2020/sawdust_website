@@ -1,14 +1,15 @@
-/*-- ************************************************************* -->
-<---                      CHECKBOX.MODULE.CSS                      -->
-<--- ************************************************************* -*/
+/*-- ****************************************************** -->
+<---                   CHECKBOX.MODULE.CSS                  -->
+<--- ****************************************************** -*/
+
 .checkbox_container {
-    font-family: "Century Gothic", "CenturyGothic", "AppleGothic", sans-serif;
-    margin: 0.25rem 0.5rem;
+    margin: 0.5rem auto;
+    padding: 0 auto;
     text-align: left;
 }
 
 .checkbox_container input {
-    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, .60);
 }
 
 .checkbox_container input:focus {

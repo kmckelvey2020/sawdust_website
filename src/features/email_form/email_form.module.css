@@ -1,0 +1,17 @@
+/*-- ****************************************************** -->
+<---                  EMAIL_FORM.MODULE.CSS                 -->
+<--- ****************************************************** -*/
+
+.email_form {
+    margin: 0 auto;
+    padding: 0 auto;
+    padding-left: 0rem;
+    width: min(65vw, 30rem);
+}
+
+.email_form h6 {
+    color: rgb(60, 80, 100);
+    padding: 1rem;
+    text-align: center;
+}
+

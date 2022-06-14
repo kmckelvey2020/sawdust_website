@@ -1,10 +1,10 @@
 import styles from "./select.module.css"
 
-/*-- ************************************************************* -->
-<---                     SELECT INPUT COMPONENT                    -->
-<--- ************************************************************* -*/
+/*-- ****************************************************** -->
+<---                  SELECT INPUT COMPONENT                -->
+<--- ****************************************************** -*/
 
-export default function Select({ errorMessage="", id, label, options, name, onChange = () => {}, value, ...inputProps }) {
+export default function Select({ errormessage="", id, label, options, name, onChange = () => {}, value, ...inputProps }) {
 
     return (
         <div className={ styles.select_container }>
@@ -33,7 +33,7 @@ export default function Select({ errorMessage="", id, label, options, name, onCh
                     )
                 })}
             </select>
-            <div className={ styles.error_message }>{ errorMessage }</div>
+            <div className={ styles.error_message }>{ errormessage }</div>
         </div>
     )
 }

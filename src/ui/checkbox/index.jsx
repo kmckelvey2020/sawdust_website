@@ -1,10 +1,10 @@
 import styles from "./checkbox.module.css";
 
-/*-- ************************************************************* -->
-<---                    CHECK BOX INPUT COMPONENT                  -->
-<--- ************************************************************* -*/
+/*-- ****************************************************** -->
+<---                 CHECK BOX INPUT COMPONENT              -->
+<--- ****************************************************** -*/
 
-export default function Checkbox({ errorMessage="", id, label, name, onChange = () => {}, type="checkbox", value, ...inputProps }) { 
+export default function Checkbox({ errormessage="", id, label, name, onChange = () => {}, type="checkbox", value, ...inputProps }) { 
 
     return (
         <div className={ styles.checkbox_container }>
@@ -20,7 +20,7 @@ export default function Checkbox({ errorMessage="", id, label, name, onChange = 
                 type={ type }
                 value={ value }
             />
-            <div className={ styles.error_message }>{ errorMessage }</div>
+            <div className={ styles.error_message }>{ errormessage }</div>
         </div>
     )
 }

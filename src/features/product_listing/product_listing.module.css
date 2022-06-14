@@ -1,6 +1,6 @@
-/*-- ************************************************************* -->
-<---                 PRODUCT_LISTING.MODULE.CSS                    -->
-<--- ************************************************************* -*/
+/*-- ****************************************************** -->
+<---              PRODUCT_LISTING.MODULE.CSS                -->
+<--- ****************************************************** -*/
 
 .product_listing {
     display: inline-flex;
@@ -9,17 +9,28 @@
     padding: 0 auto;
     margin: 0 auto;
     overflow-wrap: break-word;
-    text-align: center;
-    width: min(50vw, 15rem);
+    width: min(65vw, 19rem);
 }
 
 .product_listing .product_image {
     border: 1px solid rgb(130, 120, 110);
     padding: 0 auto;
     margin: 0 auto;
-    width: min(45vw, 14rem);
+    width: min(60vw, 18rem);
 }
 
 .fig_caption {
-    width: min(45vw, 14rem);
+    max-height: 30vh;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 0 0.25rem;
+    width: min(60vw, 18rem);
+}
+
+.fig_caption h6 {
+    text-align: center;
+}
+
+.fig_caption p {
+    text-align: left;
 }

@@ -1,49 +1,29 @@
-import Link from "next/link";
-import { useState, useContext } from "react";
-
 import styles from "./header.module.css";
+import Logo from "@/src/ui/logo";
 import NavigationBar from "../navigation_bar";
 import SearchBar from "../search_bar";
-import SearchContext from "@/src/context/search_context";
 
-/*-- ************************************************************* -->
-<---                        HEADER COMPONENT                       -->
-<--- ************************************************************* -*/
+/*-- ****************************************************** -->
+<---                     HEADER COMPONENT                   -->
+<--- ****************************************************** -*/
 
 export default function Header (){
-    const [searchValue, setSearchValue] = useState('');
-    const searchCtx = useContext(SearchContext);
-
-    function handleOnClick() {
-        searchCtx.handleSearch(searchValue);
-        // To do: history.push(path to gallery/shop)
-    }
-
-    function handleOnChange (event) {
-        setSearchValue(event.target.value);
-    }
-    
-    const onEventHandlers = { handleOnChange, handleOnClick };
 
     return(
         <header className={ styles.header }>
-            <div className={ styles.logo }>
-                <img 
-                    src="mocklogo.png" 
-                    alt="MockLogo"
-                />
-                <h1>Sawdust</h1>
-            </div>
-            <h5>"Woodcrafting with heart and history"</h5>
-            <nav className={ styles.navigation_bar }>
+            <nav className={ styles.navigation_and_search_bar }>
                 <NavigationBar />
                 <div className={ styles.search_bar }>
-                <SearchBar 
-                    onEventHandlers={ onEventHandlers }
-                    searchValue={ searchValue }
-                />
+                    <SearchBar />
                 </div>
             </nav>
+            <div className={ styles.logo }>
+                <span className={ styles.logo_image }><Logo /></span>
+                <h1>Sawdust<br/>Castle Rock</h1>
+            </div>
+            <aside className={ styles.aside }>
+                <h6>"Woodcrafting with heart and history"</h6>
+            </aside>
         </header>
     )
 }

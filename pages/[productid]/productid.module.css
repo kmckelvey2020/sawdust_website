@@ -1,0 +1,14 @@
+/*-- ****************************************************** -->
+<---                PRODUCTID.MODULE.CSS                    -->
+<--- ****************************************************** -*/
+
+.product_listing_container {
+    margin: 0 auto;
+    padding: 1rem auto;
+    text-align: center;
+}
+
+.product_history {
+    margin: 0 auto;
+    padding: 1rem 1rem;
+}

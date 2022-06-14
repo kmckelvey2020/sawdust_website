@@ -2,9 +2,9 @@ import "./_app.css"
 import Layout from "@/src/features/layout";
 import { SearchContextProvider } from "@/src/context/search_context";
 
-/*-- ************************************************************* -->
-<---                             APP                               -->
-<--- ************************************************************* -*/
+/*-- ****************************************************** -->
+<---                         APP                            -->
+<--- ****************************************************** -*/
 
 export default function App({ Component, pageProps }) {
   return (

@@ -1,11 +1,11 @@
 import styles from "./form_input.module.css";
 
-/*-- ************************************************************* -->
-<---                     FORM INPUT COMPONENT                      -->
-<--- ************************************************************* -*/
+/*-- ****************************************************** -->
+<---                  FORM INPUT COMPONENT                  -->
+<--- ****************************************************** -*/
 
-// Can be used for input type = checkbox, file, number, text, password
-export default function FormInput ({ errorMessage="", id, label="", onChange = () => {}, value, ...inputProps }) {
+// Can be used for input type = checkbox, email, file, number, text, password
+export default function FormInput ({ errormessage="", id, label="", onChange = () => {}, value, ...inputProps }) {
     if(label===""){ // Input element with no label
         return(
             <div className={ styles.form_input_nolabel }>
@@ -35,7 +35,7 @@ export default function FormInput ({ errorMessage="", id, label="", onChange = (
                     onChange={ onChange }
                     value={ value }
                 />
-                <div className={ styles.error_message }>{ errorMessage }</div>
+                <div className={ styles.error_message }>{ errormessage }</div>
             </div>
         )
     }

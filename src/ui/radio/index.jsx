@@ -1,13 +1,13 @@
 import styles from "./radio.module.css";
 
-/*-- ************************************************************* -->
-<---                  RADIO BUTTON INPUT COMPONENT                 -->
-<--- ************************************************************* -*/
+/*-- ****************************************************** -->
+<---               RADIO BUTTON INPUT COMPONENT             -->
+<--- ****************************************************** -*/
 
-export default function Radio({ errorMessage="", label, labels, name, onChange = () => {}, type="radio", value, values, ...inputProps }) {
+export default function Radio({ errormessage="", label, labels, name, onChange = () => {}, type="radio", value, values, ...inputProps }) {
     return (
         <div className={ styles.radio_container }>
-            { label }
+            { label } 
             { labels.map((elementLabel, index) => {
                 const val = values[index];
                 const labelid = elementLabel
@@ -53,7 +53,7 @@ export default function Radio({ errorMessage="", label, labels, name, onChange =
                     )
                 }
             })}
-            <div className={ styles.error_message }>{ errorMessage }</div>
+            <div className={ styles.error_message }>{ errormessage }</div>
         </div>
     )
 }

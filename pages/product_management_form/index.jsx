@@ -1,179 +1,191 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import styles from "./product_management_form.module.css";
 import Card from "@/src/ui/card";
 import FieldSet from "@/src/features/fieldset";
-import { FieldSet1, FieldSet2_images, FieldSet3_submission } from "@/src/features/fieldset/product_management_form_inputs";
+import { FieldSet1, FieldSet2_images, FieldSet3_submission, defaultProductValues } from "@/src/defaults_and_form_inputs/product_management_form_inputs";
 import Logo from "@/src/ui/logo";
 import ProductListing from "@/src/features/product_listing";
+import useFetch from "@/src/hooks/useFetch";
+import getAPIOptions from "@/src/helperfunctions/getAPIOptions";
+import validateFields from "@/src/helperfunctions/validateFields";
 
-/*-- ************************************************************* -->
-<---             PRODUCT_MANAGEMENT_FORM PAGE COMPONENT            -->
-<--- ************************************************************* -*/
-export default function ProductManagementForm(props){
-
-    // Default product values for intializing and resetting product
-    const defaultProductValues = {
-        product_id: props.product ? props.product.product_id : '',
-        product_name: props.product ? props.product.product_name : '',
-        product_description: props.product ? props.product.product_description : '',
-        product_category: props.product ? props.product.product_category : 'furniture',
-        product_price: props.product ? props.product.product_price : 599.99,
-        quantity: props.product ? props.product.quantity : 1,
-        for_sale: props.product ? props.product.for_sale : false,
-        images: props.product ? props.product.images : [],
-        alt_description: props.product ? props.product.alt_description : []
+/*-- ****************************************************** -->
+<---                 PRODUCT_MANAGEMENT_FORM                -->
+<--- ****************************************************** -*/
+// To do: fix error "Warning: A component is changing a controlled input to be uncontrolled." on radio button
+// To do: When updating or deleting a product, delete old images from file before pathnames are updated or deleted
+export default function ProductManagementForm(){
+    const { fetchedData, makeFetch } = useFetch();
+    const updatedProductValues = {
+        product_id: fetchedData && fetchedData.reslength>0 && fetchedData.response[0].product_id ? fetchedData.response[0].product_id : '',
+        product_name: fetchedData && fetchedData.reslength>0 && fetchedData.response[0].product_name ? fetchedData.response[0].product_name : '',
+        product_description: fetchedData && fetchedData.reslength>0 && fetchedData.response[0].product_description ? fetchedData.response[0].product_description : '',
+        product_category: fetchedData && fetchedData.reslength>0 && fetchedData.response[0].product_category ? fetchedData.response[0].product_category : 'furniture',
+        product_price: fetchedData && fetchedData.reslength>0 && fetchedData.response[0].product_price ? fetchedData.response[0].product_price : 599.99,
+        quantity: fetchedData && fetchedData.reslength>0 && fetchedData.response[0].quantity ? fetchedData.response[0].quantity : 1,
+        for_sale: fetchedData && fetchedData.reslength>0 && fetchedData.response[0].for_sale ? fetchedData.response[0].for_sale : false, 
+        image0: '', //To do: figure out how to display current image path if it exists
+        alt_description0: fetchedData && fetchedData.reslength>0 && fetchedData.response[0].alt_description0 ? fetchedData.response[0].alt_description0 : '',
+        image1: '', 
+        alt_description1: fetchedData && fetchedData.reslength>0 && fetchedData.response[0].alt_description1 ? fetchedData.response[0].alt_description1 : '',
+        image2: '', 
+        alt_description2: fetchedData && fetchedData.reslength>0 && fetchedData.response[0].alt_description2 ? fetchedData.response[0].alt_description2 : '',
+        image3: '', 
+        alt_description3: fetchedData && fetchedData.reslength>0 && fetchedData.response[0].alt_description3 ? fetchedData.response[0].alt_description3 : '',
     };
-    // Product object state, setState
     const [product, setProduct] = useState(defaultProductValues);
-    // Product variables
-    const { product_id, product_name, product_description, product_category, product_price, quantity, for_sale, images, alt_description 
-    } = product;
-    // Variable to store product listing that has been looked up
     const [selected_product, setSelected_product] = useState(<Logo />);
-    // Error_Success message
     const [message, setMessage] = useState('');
-    
-/*-- ************************************************************* -->
-<---    ONCLICK HANDLER FOR PRODUCT LOOKUP, ADD, DELETE, UPDATE    -->
-<--- ************************************************************* -*/
-    async function handleOnClick(e) {
+    const [files, setFiles] = useState({image0: null, image1: null, image2: null, image3: null});
 
-        let fetchStr, fetchMethod, res;
-        switch (e.target.name) {
-            // Set up fetch url and request method
-            case 'add_product':
-                fetchStr='/api/products';
-                fetchMethod='POST';
-                setProduct((prevState) => ({ // Product id will be auto generated as Primary Key in database
-                    ...prevState, 
-                    product_id: ''
-                }));
-                break;
-            case 'delete_product':
-                fetchMethod='DELETE';
-                break;
-            case 'update_product':
-                fetchStr=`/api/products/[${product_id}]`;
-                fetchMethod='PUT';
-                break;
-            default: // case 'look_up_product'
-                fetchMethod='GET';
-                break;
-        }
-        // GET and DELETE request
-        if(fetchMethod==='GET' || fetchMethod==='DELETE'){
-            res = await fetch(`/api/products/[${product_id}]`, {
-                method: fetchMethod,
-                headers: {'Content-Type': 'application/json'}
-            })
-            .then((response) => response.json())
-            .catch((err) => console.log(err));
-        }
-        // POST and PUT request
-        else if(fetchMethod==='POST' || fetchMethod==='PUT'){
-            const values = [product.product_name, product.product_description, product.product_category, product.product_price, product.quantity, product.for_sale];
-            const requiredFieldsFilled = values.every((field) => {
-                return `${field}`.trim() !== '';
-            })
-            if(requiredFieldsFilled){
-                res = await fetch(fetchStr, {
-                    method: fetchMethod,
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({...product})
-                })
-                .then((response) => response.json())
-                .catch((err) => console.log(err));
-            }
-            else{
-                res = {
-                   "response": [],
-                   "reslength": 0,
-                   "message": ["Error: Fill out all required form fields. When ADDING a new product: Do NOT enter a product id. A unique product id will automatically be generated. When UPDATING existing products: DO enter the product id you wish to update, along with the required product fields."] 
-                };
-            }
-        }
-        console.log(`Server response:\n ${JSON.stringify(res)}`);
-        setMessage(`${res.message[0]}`);
-        //To do: consolidate res.reslength>0 with fetchMethod !== "DELETE"
-        if(res.reslength>0) { // Success
-            if(fetchMethod==="DELETE") {
-                setProduct((prevState) => ({ // Fill in form fields with defaults
-                    ...prevState, 
-                    ...defaultProductValues,
-                }));
-                setSelected_product(<Logo />);
-            }
-            else {
-                setProduct((prevState) => ({ // Fill in form fields with requested data
-                    ...prevState, 
-                    product_id: res.response[0].product_id,
-                    product_name: res.response[0].product_name,
-                    product_description: res.response[0].product_description,
-                    product_category: res.response[0].product_category,
-                    product_price: res.response[0].product_price,
-                    quantity: res.response[0].quantity,
-                    for_sale: res.response[0].for_sale, 
-                    image: [],
-                    alt_description: []
-                }));
-                setSelected_product(<ProductListing product={ res.response[0] } />);
-            }
-        }
-        else { // Error
-            setSelected_product(<Logo />);
-        }
-    }
+/*-- ****************************************************** -->
+<---            ONSUBMIT HANDLER FOR ADD, UPDATE            -->
+<--- ****************************************************** -*/
 
-/*-- ************************************************************* -->
-<---                  HANDLE FORM FIELD CHANGE                     -->
-<--- ************************************************************* -*/
+    async function handleOnSubmit(event) {
+        event.preventDefault();
+        const selectedMethod = event.target.name;
+
+        // Product id will be auto generated as Primary Key in database
+        if(selectedMethod==='add_product') {
+            setProduct((prevState) => ({ 
+                ...prevState, 
+                product_id: ''
+            }));
+        }
+
+        const { validationMessage, sanitizedFieldValues } = validateFields(product);
+
+        // Append data from product object and files object to FormData object data
+        const data = new FormData();
+        for(const [key, val] of Object.entries(sanitizedFieldValues)) {
+            data.append(`${key}`, val);
+        }
+        for(const [key, val] of Object.entries(files)) {
+            if(val) {
+                data.append(`${key}`, val, val.name);
+            }
+        }
+
+        const { values, url, configurations } = getAPIOptions(selectedMethod, sanitizedFieldValues, data);
+        const requiredFieldsFilled = values.every((field) => {
+            return `${field}`.trim() !== '';
+        });
+
+        if(requiredFieldsFilled && !validationMessage.includes("Error")){  
+            // Make fetch request (useFetch hook) based on url and configurations
+            await makeFetch(url, configurations);
+        } else if(!requiredFieldsFilled) {
+            setMessage("Fill out all required form fields. When ADDING a new product: Do NOT enter a product id. A unique product id will automatically be generated. When UPDATING existing products: DO enter the product id you wish to update, along with the required product fields.");
+        } else {
+            setMessage(validationMessage);
+        }
+    };
+
+/*-- ****************************************************** -->
+<---        ONCLICK HANDLER FOR PRODUCT LOOKUP, DELETE      -->
+<--- ****************************************************** -*/
+
+    async function handleOnClick(event) {
+        const selectedMethod = event.target.name;
+        const { validationMessage, sanitizedFieldValues } = validateFields(product);
+        const { values, url, configurations } = getAPIOptions(selectedMethod, sanitizedFieldValues);
+        const requiredFieldsFilled = values.every((field) => {
+            return `${field}`.trim() !== '';
+        });
+        if(requiredFieldsFilled && !validationMessage.includes("Error")){  
+            // Make fetch request (useFetch hook) based on url and configurations
+            await makeFetch(url, configurations);
+        } else if(!requiredFieldsFilled) {
+            setMessage("You must enter a product id to look up, update, or delete a product.");
+        } else {
+            setMessage(validationMessage);
+        }
+    };
+
+/*-- ****************************************************** -->
+<---                  FETCHED DATA CHANGE                   -->
+<--- ****************************************************** -*/
+
+    useEffect(() => {
+        if(fetchedData && fetchedData.reslength>0) {
+            setProduct((prevState) => ({ // Fill in form fields with requested data
+                ...prevState, 
+                ...updatedProductValues
+            }));
+            setSelected_product(<ProductListing product={ fetchedData ? fetchedData.response[0] : defaultProductValues } />);
+        }
+        else {
+            setProduct((prevState) => ({ // Fill in form fields with defaults
+                ...prevState, 
+                ...defaultProductValues
+            }));
+            setSelected_product(<Logo />); // Placeholder
+        }
+        setMessage(fetchedData ? fetchedData.message[0] : '');
+    }, [fetchedData]); // Need dependency array to prevent infinite loop
+
+/*-- ****************************************************** -->
+<---               HANDLE FORM FIELD CHANGE                 -->
+<--- ****************************************************** -*/
+
     function handleOnChange (event) {
         const { name, value } = event.target;
         setProduct((prevState) => ({
             ...prevState, 
             [name]: value
         }));
-    }
+        if(event.target.files) {
+            setFiles((prevState) => ({
+                ...prevState,
+                [name]: event.target.files[0]
+            }));
+        }
+    };
 
-/*-- ************************************************************* -->
-<---                        EVENT HANDLERS                         -->
-<--- ************************************************************* -*/
-    const onEventHandlers = { handleOnChange, handleOnClick };
+/*-- ****************************************************** -->
+<---                     EVENT HANDLERS                     -->
+<--- ****************************************************** -*/
 
-/*-- ************************************************************* -->
-<---                   PRODUCT_MANAGEMENT_FORM                     -->
-<--- ************************************************************* -*/
+    const onEventHandlers = { handleOnChange, handleOnClick, handleOnSubmit };
+
+/*-- ****************************************************** -->
+<---                PRODUCT_MANAGEMENT_FORM                 -->
+<--- ****************************************************** -*/
+
     return(
-        //To do: Create option to loop FieldSet2_images if more images are required
-        //To do: handle known issue on for_sale radio button, controlled input changed to uncontrolled input on handleOnChange
-        <div className={styles.form_container}>
+        <div className="container">
             <Head>
                 <title>Sawdust Product Management Form</title>
                 <meta name="description" content="Product Management Form" />
             </Head>
-            <p className={ styles.message }>{ message }</p><br/>
-            <div className={ styles.selected_product }>
-                <Card>{ selected_product }</Card>
-            </div>
-            <form>
-                <FieldSet 
-                    fieldset_heading="Product Management" 
-                    onEventHandlers={ onEventHandlers }
-                    product={ product }
-                    input_props={ FieldSet1 } />
-                <FieldSet
-                    fieldset_heading="Image Upload" 
-                    onEventHandlers={ onEventHandlers }
-                    product={ product }
-                    input_props={ FieldSet2_images } />
-                <FieldSet 
-                    fieldset_heading="" 
-                    onEventHandlers={ onEventHandlers }
-                    product={ product }
-                    input_props={ FieldSet3_submission } />
-            </form>
+            <main className="main_container">
+                <h6 className="message">{ message }</h6>
+                <div className={ styles.selected_product }>
+                    <Card>{ selected_product }</Card>
+                </div>
+                <form id="product_form" onSubmit={ handleOnSubmit }>
+                    <FieldSet 
+                        fieldset_heading="Product Management" 
+                        onEventHandlers={ onEventHandlers }
+                        fieldvalues={ product }
+                        input_props={ FieldSet1 } />
+                    <div className="centered_div">
+                        <FieldSet
+                            fieldset_heading="Image Upload" 
+                            onEventHandlers={ onEventHandlers }
+                            fieldvalues={ product }
+                            input_props={ FieldSet2_images } /> 
+                        <FieldSet
+                            fieldset_heading="" // Buttons
+                            onEventHandlers={ onEventHandlers }
+                            fieldvalues={ product }
+                            input_props={ FieldSet3_submission } />
+                    </div>
+                </form>
+            </main>
         </div>
     )
 }

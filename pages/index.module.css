@@ -1,15 +1,31 @@
-/*-- ************************************************************* -->
-<---                       INDEX.MODULE.CSS                        -->
-<--- ************************************************************* -*/
+/*-- ****************************************************** -->
+<---                    INDEX.MODULE.CSS                    -->
+<--- ****************************************************** -*/
 
-.landing_container{
-    margin: 0.5rem 0.5rem;
+.figure_container {
+    float: right;
 }
 
-.lumber1 {
+.landing_image {
     border: 1px solid rgb(130, 120, 110);
-    float: right;
-    padding: 0rem 0rem;
-    margin: 0.5rem 0.5rem;
-    width: min(30vw, 27rem);
+    padding: 0 auto;
+    margin: 0 auto;
+    width: min(60vw, 25rem);
+}
+
+.figure_container figcaption {
+    padding: 0 auto;
+    margin: 0 auto;
+}
+
+.figure_container p {
+    text-align: center;
+}
+
+@media only screen and (max-width: 70rem) {
+    .figure_container {
+        float: none;
+        margin: 0 1rem;
+        overflow: hidden;
+    }
 }

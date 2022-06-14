@@ -1,11 +1,10 @@
 import styles from "./textarea.module.css";
 
-/*-- ************************************************************* -->
-<---                   TEXT AREA INPUT COMPONENT                   -->
-<--- ************************************************************* -*/
+/*-- ****************************************************** -->
+<---                TEXT AREA INPUT COMPONENT               -->
+<--- ****************************************************** -*/
 
-export default function TextArea({ errorMessage="", id, label, onChange = () => {}, value, ...inputProps }) {
-
+export default function TextArea({ errormessage="", id, label, char_limit=150, onChange = () => {}, value, ...inputProps }) {
     return (
         <div className={ styles.text_area_container }>
             <div>
@@ -21,7 +20,7 @@ export default function TextArea({ errorMessage="", id, label, onChange = () => 
                 onChange={ onChange }
                 value={ value }
             />
-            <div className={ styles.error_message }>{ errorMessage }</div>
+            <div className={ styles.error_message }>{ value.length<=char_limit ? '' : errormessage + ` ${value.length} out of ${char_limit} characters used.` }</div>
         </div>
     )
 }

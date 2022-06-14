@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import { useState, useEffect, useContext } from "react";
 
 import styles from "./shop.module.css";
@@ -7,9 +8,11 @@ import Logo from "@/src/ui/logo";
 import ProductListing from "@/src/features/product_listing";
 import SearchContext from "@/src/context/search_context";
 
-/*-- ************************************************************* -->
-<---                  PRODUCT SHOP PAGE COMPONENT                  -->
-<--- ************************************************************* -*/
+/*-- ****************************************************** -->
+<---               PRODUCT SHOP PAGE COMPONENT              -->
+<--- ****************************************************** -*/
+// To do: Make sure product listings are displaying a common, visually pleasing, responsive size
+// To do: Make sure product info doesn't get cut off or in some way shows there is more to see
 
 export default function Shop(props){
     const [isLoading, setIsLoading] = useState(true);
@@ -17,9 +20,10 @@ export default function Shop(props){
     const [products, setProducts] = useState(defaultProductsArray.products);
     const searchCtx = useContext(SearchContext);
 
-/*-- ************************************************************* -->
-<---                FETCH ALL PRODUCTS FROM DATABASE               -->
-<--- ************************************************************* -*/
+/*-- ****************************************************** -->
+<---             FETCH ALL PRODUCTS FROM DATABASE           -->
+<--- ****************************************************** -*/
+
     useEffect(() => {
         setIsLoading(true);
         fetch(`/api/products`, {
@@ -30,64 +34,68 @@ export default function Shop(props){
         }).then((data) => {
             if(data.reslength>0) { // Success
                 setIsLoading(false);
-                setProducts((prevState) => ([ 
-                    ...prevState, 
-                    ...data.response
-                ]));        
+                setProducts([...data.response]);        
             }
         }).catch((err) => console.log(err));
     }, []); // Need dependency array to prevent infinite loop
 
-/*-- ************************************************************* -->
-<---          PLACEHOLDER UNTIL FETCH PROMISE IS FULFILLED         -->
-<--- ************************************************************* -*/
+/*-- ****************************************************** -->
+<---       PLACEHOLDER UNTIL FETCH PROMISE IS FULFILLED     -->
+<--- ****************************************************** -*/
+
     if(isLoading) {
         return (
-            <section className={ styles.shop_loading }>
+            <li className={ styles.shop_loading }>
                 <p>Loading...</p>
                 <Logo />
-            </section>
+            </li>
         );
     }
 
-/*-- ************************************************************* -->
-<---          CONDITIONAL RENDERING BASED ON SEARCH RESULTS        -->
-<--- ************************************************************* -*/
-    //To do: additional filter based on for_sale===true
-    //To do: add link to individual product info page
+/*-- ****************************************************** -->
+<---       CONDITIONAL RENDERING BASED ON SEARCH RESULTS    -->
+<--- ****************************************************** -*/
+
     let counter=0;
     let content=products.map((product, index) => {
-        if((searchCtx.search_term==='') || (`${product.product_id}`===searchCtx.search_term) || (product.product_category.toLowerCase().includes(searchCtx.search_term.toLowerCase())) || (product.product_description.toLowerCase().includes(searchCtx.search_term.toLowerCase()))){
+        if((product.for_sale===true) && ((searchCtx.search_term==='') || (`${product.product_id}`===searchCtx.search_term) || (product.product_category.toLowerCase().includes(searchCtx.search_term.toLowerCase())) || (product.product_description.toLowerCase().includes(searchCtx.search_term.toLowerCase())))){
             counter++;
             return (
-                <li key={ index }>
-                    <Card>
-                        <ProductListing product={ product }/>
-                    </Card>
-                </li>
+                <Card key={ index }>
+                    <Link href={`/${product.product_id}`}>
+                        <a className={ styles.product_link }>
+                            <li>
+                                <ProductListing product={ product }/>
+                            </li>
+                        </a>
+                    </Link>
+                </Card>
             )}})
     if(counter===0) {
         content=
-            <section className={ styles.shop_loading }>
+            <li className={ styles.shop_no_results }>
                 <h6>No Results Matching Search Term</h6>
                 <p>Try entering a product id or category such as furniture, woodburning, art, or misc.</p>
                 <Logo />
-            </section>
+            </li>
     }
-/*-- ************************************************************* -->
-<---              DISPLAY SHOP WHEN PROMISE FULFILLS               -->
-<--- ************************************************************* -*/
+/*-- ****************************************************** -->
+<---           DISPLAY SHOP WHEN PROMISE FULFILLS           -->
+<--- ****************************************************** -*/
+
     return(
-        //To do: display search results
-        <div className={ styles.shop_content }>
+        <div className="container">
             <Head>
                 <title>Shop Sawdust CastleRock</title>
                 <meta name="description" content="Shop Sawdust CastleRock" />
             </Head>
-            <h5>Shop</h5>
-            <ul className={ styles.shop_list }>
-                { content }
-            </ul>
+            <main className="main_container">
+                <h3>Shop Our Custom Projects</h3>
+                <p>Browse our current projects and items for sale. Click on an image to view the details. If you see something you are interested in (or would like to discuss a personalized commission), feel free to <Link href="/contact"><a>Contact Us</a></Link>.</p>
+                <ul className={ styles.shop_list }>
+                    { content }
+                </ul>
+            </main>
         </div>
     )
 }
