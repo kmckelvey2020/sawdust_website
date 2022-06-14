@@ -10,13 +10,17 @@ import ProductListing from "@/src/features/product_listing";
 import useFetch from "@/src/hooks/useFetch";
 import getAPIOptions from "@/src/helperfunctions/getAPIOptions";
 import validateFields from "@/src/helperfunctions/validateFields";
+import { authenticatedPage } from "pages/api/authentication_verification";
 
 /*-- ****************************************************** -->
 <---                 PRODUCT_MANAGEMENT_FORM                -->
 <--- ****************************************************** -*/
 // To do: fix error "Warning: A component is changing a controlled input to be uncontrolled." on radio button
 // To do: When updating or deleting a product, delete old images from file before pathnames are updated or deleted
-export default function ProductManagementForm(){
+export default function ProductManagementForm(props){
+    //const cookie = props.req?.headers.cookie;
+    //console.log(cookie?"Authorized":"Not Authorized");
+    //authenticatedPage(); // req not defined, need to figure out how to check header cookies on pages
     const { fetchedData, makeFetch } = useFetch();
     const updatedProductValues = {
         product_id: fetchedData && fetchedData.reslength>0 && fetchedData.response[0].product_id ? fetchedData.response[0].product_id : '',
