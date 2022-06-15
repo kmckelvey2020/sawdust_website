@@ -5,7 +5,6 @@
 .logo_image {
     border-radius: 100px;
     box-shadow: 0 0 0.5rem 0.5rem rgba(100, 100, 100, 0.4);
-    justify-content: center;
     margin: 0.25rem auto;
     padding: 0 0;
     width: min(20vw, 8rem);

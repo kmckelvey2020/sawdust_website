@@ -3,8 +3,6 @@
 <--- ************************************************************* -*/
 
 .footer_content {
-    flex-wrap: wrap;
-    justify-content: center;
     padding: 0 auto;
     margin: 0 auto;
     text-align: center;
@@ -18,6 +16,9 @@
 
 .rights_reserved, 
 .social_sites {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
     color: whitesmoke;
     font-size: .75rem;
     text-align: center;

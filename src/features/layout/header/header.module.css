@@ -58,6 +58,7 @@
 .search_bar form {
     display: inline-flex;
     flex-wrap: wrap;
+    justify-content: center;
     text-align: center;    
     vertical-align: middle; 
 }
