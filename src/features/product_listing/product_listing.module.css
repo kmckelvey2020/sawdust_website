@@ -22,7 +22,7 @@
 .fig_caption {
     max-height: 30vh;
     margin: 0 auto;
-    overflow: hidden;
+    overflow: scroll;
     padding: 0 0.25rem;
     width: min(60vw, 18rem);
 }
