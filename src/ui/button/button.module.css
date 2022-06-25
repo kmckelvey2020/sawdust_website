@@ -8,6 +8,7 @@
     border-radius: .2rem;
     box-shadow: 0 0 0.1rem 0.1rem rgba(100, 100, 100, 0.25);
     color: whitesmoke;
+    cursor: pointer;
     font-family: "Century Gothic", "CenturyGothic", "AppleGothic", sans-serif;
     font-size: min(4vw, .90rem);
     padding: 0.25rem .5rem;
