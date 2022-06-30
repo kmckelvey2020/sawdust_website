@@ -176,11 +176,11 @@ const manage_admin_content = FieldSetManageAdmin.map((field_attributes) => {
 */
 
 const signup_content = 
-    <section className={ styles.shop_no_results }>
+    <section>
         <h6>Not Authorized</h6>
     </section>
 const manage_admin_content =
-    <section className={ styles.shop_no_results }>
+    <section>
         <h6>Not Authorized</h6>
     </section>
 
