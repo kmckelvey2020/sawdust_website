@@ -48,6 +48,7 @@
     display: inline-flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-content: center;
     vertical-align: middle;
 }
 
