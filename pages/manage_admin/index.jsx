@@ -175,6 +175,7 @@ const manage_admin_content = FieldSetManageAdmin.map((field_attributes) => {
 });
 */
 
+const message = '';
 const signup_content = 
     <section>
         <h6>Not Authorized</h6>
