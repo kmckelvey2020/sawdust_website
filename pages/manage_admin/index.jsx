@@ -17,6 +17,7 @@ import validateFields from "@/src/helperfunctions/validateFields";
 // To do: Need to redirect Product Management Form to login page if no valid token exists. 
 // To do: after initial signup, remove/comment out signup section and other restricted sections
 export default function ManageAdmin(){
+    /*
     const { fetchedData, makeFetch } = useFetch();
     const [manageAdmin_values, setManageAdmin_values] = useState(defaultManageAdminValues);
     const [signup_values, setSignup_values] = useState(defaultSignUpValues);
@@ -30,11 +31,11 @@ export default function ManageAdmin(){
         manage_password: '',
         manage_passwordre: '' 
     };
-
+*/
 /*-- ****************************************************** -->
 <---                    ONCLICK HANDLER                     -->
 <--- ****************************************************** -*/
-
+/*
     async function handleOnClick(event) {
         const selectedMethod = event.target.name;
         const { validationMessage, sanitizedFieldValues } = validateFields(selectedMethod==="signup_button" ? signup_values : manageAdmin_values);
@@ -52,11 +53,11 @@ export default function ManageAdmin(){
             setMessage(validationMessage);
         }
     };
-
+*/
 /*-- ****************************************************** -->
 <---                  FETCHED DATA CHANGE                   -->
 <--- ****************************************************** -*/
-
+/*
     useEffect(() => {
         setManageAdmin_values((prevState) => ({ // Fill in form fields with requested data
             ...prevState, 
@@ -68,11 +69,11 @@ export default function ManageAdmin(){
         }));
         setMessage(fetchedData ? fetchedData.message[0] : '');
     }, [fetchedData]); // Need dependency array to prevent infinite loop
-
+*/
 /*-- ****************************************************** -->
 <---               HANDLE FORM FIELD CHANGE                 -->
 <--- ****************************************************** -*/
-
+/*
     function handleOnChange (event) {
         const { name, value } = event.target;
         if(name.includes("manage") || name.includes("current")){
@@ -87,11 +88,11 @@ export default function ManageAdmin(){
             }));
         }
     };
-
+*/
 /*-- ****************************************************** -->
 <---                     SIGNUP FORM                        -->
 <--- ****************************************************** -*/
-
+/*
     const signup_content = FieldSetSignup.map((field_attributes) => {
         const { id, name, type, ...attributes } = field_attributes;
         if(type==="button") {    
@@ -129,11 +130,11 @@ export default function ManageAdmin(){
                     value={ signup_values[name] } />
         )}
     });
-
+*/
 /*-- ****************************************************** -->
 <---                    MANAGE USER FORM                    -->
 <--- ****************************************************** -*/
-
+/*
 const manage_admin_content = FieldSetManageAdmin.map((field_attributes) => {
     const { id, name, type, ...attributes } = field_attributes;
     if(type==="button") {    
@@ -172,6 +173,16 @@ const manage_admin_content = FieldSetManageAdmin.map((field_attributes) => {
                 value={ manageAdmin_values[name] } />
     )}
 });
+*/
+
+const signup_content = 
+    <section className={ styles.shop_no_results }>
+        <h6>Not Authorized</h6>
+    </section>
+const manage_admin_content =
+    <section className={ styles.shop_no_results }>
+        <h6>Not Authorized</h6>
+    </section>
 
 /*-- ****************************************************** -->
 <---                      ADMIN FORM                        -->
