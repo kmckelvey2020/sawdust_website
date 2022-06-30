@@ -22,10 +22,13 @@
 .logo, .navigation_and_search_bar, .header h6 {
     background-color: rgba(60, 80, 100, .70);
     border: 0px solid rgba(60, 80, 100, .35);
-    margin: 0 auto;
-    padding: 0.5rem auto;
-    text-align: center;
     width: 100%;
+}
+
+.logo, .header h6 {
+    padding: 0.5rem auto;
+    margin: 0 auto;
+    text-align: center;
 }
 
 .logo_image {
@@ -49,7 +52,8 @@
     flex-wrap: wrap;
     justify-content: center;
     align-content: center;
-    margin: 0 auto;
+    margin: 0rem auto;
+    padding: 0rem 0rem;
     text-align: center;
     vertical-align: middle;
 }
