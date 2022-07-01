@@ -47,7 +47,6 @@ export default function Login(){
 <--- ****************************************************** -*/
 
     useEffect(() => {
-        console.log(fetchedData ? fetchedData.authToken : '');
         setMessage(fetchedData ? fetchedData.message[0] : '');
         if(fetchedData && fetchedData.authToken) {
             router.push("/product_management_form");
