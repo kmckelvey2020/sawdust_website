@@ -5,9 +5,9 @@
 const CategoryMenuChoices = [
     {  
         alt:"View Furniture Category",
-        id:"furniture_link",
+        id:"furniture",
         label:"Furniture", 
-        name:"furniture_link",
+        name:"furniture",
         src:"/mocklogo.png",
         width:50,
         height:50,
@@ -17,9 +17,9 @@ const CategoryMenuChoices = [
     },
     {  
         alt:"View Woodburning Category",
-        id:"woodburning_link",
+        id:"woodburning",
         label:"Woodburning", 
-        name:"woodburning_link",
+        name:"woodburning",
         src:"/mocklogo.png",
         width:50,
         height:50,
@@ -29,9 +29,9 @@ const CategoryMenuChoices = [
     },
     {  
         alt:"View Art Category",
-        id:"art_link",
+        id:"art",
         label:"Art", 
-        name:"art_link",
+        name:"art",
         src:"/mocklogo.png",
         width:50,
         height:50,
@@ -41,9 +41,9 @@ const CategoryMenuChoices = [
     },
     {
         alt:"View Miscellaneous Category",
-        id:"misc_link",
+        id:"misc",
         label:"Miscellaneous",
-        name:"misc_link",
+        name:"misc",
         src:"/mocklogo.png",
         width:50,
         height:50,

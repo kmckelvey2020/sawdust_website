@@ -15,8 +15,13 @@ export default function CategoryMenu (){
     const searchCtx = useContext(SearchContext);
 
     function handleOnClick(event) {
-        //console.log(event.target);
-        searchCtx.handleSearch(event.target.value);
+        //console.log(event.target.attributes.value.nodeValue);
+        //console.log(event.target.innerHTML);
+        if(event.target.name) {
+            searchCtx.handleSearch(event.target.name);
+        } else if(event.target.innerHTML) {
+            searchCtx.handleSearch(event.target.attributes.value.nodeValue);
+        } else searchCtx.handleSearch("");
         if(router.pathname!=="/gallery" && router.pathname!=="/shop") {
             router.push("/shop");
         }
@@ -27,7 +32,7 @@ export default function CategoryMenu (){
     const content=CategoryMenuChoices.map((attributes, index) => {
         const { id, label, name, value, ...inputProps} = attributes;
         return (
-            <button key={ index } className={ styles.category_menu_grid_items } type="button" value={ value } onClick={ handleOnClick }>
+            <button key={ index } className={ styles.category_menu_grid_items } type="button" name={ value } value={ value } onClick={ handleOnClick }>
                 <figure>
                     <div>
                         <Image
