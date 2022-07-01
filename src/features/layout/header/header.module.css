@@ -48,12 +48,14 @@
 <--- ****************************************************** -*/
 
 .navigation_and_search_bar {
+    border: 2px solid blue;
     display: inline-flex;
     flex-wrap: wrap;
-    justify-content: center;
     align-content: center;
+    gap: 0.1rem;
+    justify-content: center;
     margin: 0rem auto;
-    padding: 0rem 0rem;
+    padding: 0rem auto;
     text-align: center;
     vertical-align: middle;
 }
@@ -62,7 +64,12 @@
 <---                        SEARCH                          -->
 <--- ****************************************************** -*/
 
+.search_bar {
+    border: 2px solid white;
+    padding: 0rem auto;
+}
 .search_bar form {
+    border: 2px solid red;
     display: inline-flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -78,7 +85,7 @@
     padding: 0.25rem 1rem; 
     text-align: center;
     vertical-align: middle; 
-    width: min(30vw, 15rem);
+    width: min(35vw, 15rem);
 }
 
 .search_bar button {
