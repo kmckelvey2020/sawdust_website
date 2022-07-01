@@ -9,9 +9,15 @@
     width: min(65vw, 30rem);
 }
 
-.email_form h6 {
-    color: rgb(60, 80, 100);
-    padding: 1rem;
+.email_form h5 {
+    margin: 0rem auto;
+    padding: 0rem 1rem;
+}
+
+.message {
+    color: rgb(0, 100, 140);
+    margin: 0rem auto;
+    padding: 0.25rem 1rem;
     text-align: center;
 }
 

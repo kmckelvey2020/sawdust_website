@@ -24,7 +24,8 @@ export default function EmailForm() {
             return `${field}`.trim() !== '';
         })
         
-        if(requiredFieldsFilled && !validationMessage.includes("Error")){  
+        if(requiredFieldsFilled && !validationMessage.includes("Error")){ 
+            setMessage("Sending...");
             // Make fetch request (useFetch hook) based on url and configurations
             await makeFetch(url, configurations);
         } else if(!requiredFieldsFilled){

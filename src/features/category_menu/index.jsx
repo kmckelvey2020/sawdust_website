@@ -9,14 +9,12 @@ import CategoryMenuChoices from "@/src/defaults_and_form_inputs/category_menu_ch
 /*-- ****************************************************** -->
 <---                 CATEGORY MENU COMPONENT                -->
 <--- ****************************************************** -*/
-// To do: Fix 'value' not being passed onClick of image or figcaption (only outside edges of button)
+
 export default function CategoryMenu (){
     const router = useRouter();
     const searchCtx = useContext(SearchContext);
 
     function handleOnClick(event) {
-        //console.log(event.target.attributes.value.nodeValue);
-        //console.log(event.target.innerHTML);
         if(event.target.name) {
             searchCtx.handleSearch(event.target.name);
         } else if(event.target.innerHTML) {
