@@ -34,7 +34,8 @@
 @media only screen and (max-width: 70rem) {
     .figure_container {
         float: none;
-        margin: 1rem 1rem;
+        margin: 0rem 1rem;
+        padding-top: 1rem;
         overflow: hidden;
     }
 }
