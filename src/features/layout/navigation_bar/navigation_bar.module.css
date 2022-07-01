@@ -3,15 +3,12 @@
 <--- ****************************************************** -*/
 
 .navigation_bar {
-    border: 2px solid red;
     display: flex;
     justify-content: center;
     padding: 0rem auto;
 }
 
 .navigation_bar ul {   
-    border: 2px solid purple;
-
     display: inline-flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -23,7 +20,7 @@
 .navigation_bar ul li {
     border: 0rem;
     margin: 0.1rem 0rem;
-    padding: 0.15rem 0rem;
+    padding: 0.1rem 0rem;
     padding-left: 0;
 }
 
